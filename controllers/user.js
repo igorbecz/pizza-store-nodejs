@@ -1,19 +1,19 @@
 exports.getIndex = (req, res, next) => {
-  res.render("index", { title: "Homepage" });
+  res.render("user/index", { title: "Homepage" });
 };
 
 exports.getContact = (req, res, next) => {
-  res.render("contact", { title: "Contact" });
+  res.render("user/contact", { title: "Contact" });
 };
 
 exports.getMenu = (req, res, next) => {
-  res.render("menu", { title: "Menu" });
+  res.render("user/menu", { title: "Menu" });
 };
 
 exports.getOrder = (req, res, next) => {
-  res.render("order", { title: "Order" });
+  res.render("user/order", { title: "Order" });
 };
 
 exports.getTrackOrder = (req, res, next) => {
-  res.render("track-order", { title: "Track Order" });
+  res.render("user/track-order", { title: "Track Order" });
 };
