@@ -2,5 +2,20 @@
   </head>
   <body>
     <%- include("../includes/navigation.ejs") %> 
-    <h1>Product list</h1>
+    <div class="centered">
+      <h1>Admin Product list</h1>
+      <% products.forEach(product => { %>
+        <div class="product-item">
+          <h1 class="product-item__title"><%= product.title %> </h1>
+          <img class="product-item__image" src="<%= product.imageUrl %>" alt="<%= product.imageUrl %>"> 
+          <p class="product-item__description"><%= product.description %> </p>
+          <p class="product-item__price"> <%= product.price %> </p>
+          <form action="/admin/delete-product" method="POST">
+            <input type="hidden" value="<%= product.id %>" name="productId">
+            <button type="submit">Delete</button>
+          </form> 
+        </div>
+      <% }) %>
+    </div>
+  </body>
 </html>

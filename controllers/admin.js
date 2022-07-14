@@ -1,7 +1,16 @@
 const Product = require("../models/Product");
 
 exports.getProductList = (req, res, next) => {
-  res.render("admin/product-list", { title: "Product List" });
+  Product.findAll()
+    .then((products) => {
+      res.render("admin/product-list", {
+        title: "Admin - Product List",
+        products: products,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.getAddProduct = (req, res, next) => {
@@ -26,4 +35,18 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getEditProduct = (req, res, next) => {
   res.render("admin/edit-product", { title: "Edit Product" });
+};
+
+exports.postDeleteProduct = (req, res, next) => {
+  Product.findByPk(req.body.productId)
+    .then((product) => {
+      return product.destroy();
+    })
+    .then(() => {
+      console.log("Deleted product");
+      res.redirect("/admin/products-list");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
