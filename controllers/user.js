@@ -1,3 +1,5 @@
+const Product = require("../models/Product");
+
 exports.getIndex = (req, res, next) => {
   res.render("user/index", { title: "Homepage" });
 };
@@ -7,7 +9,14 @@ exports.getContact = (req, res, next) => {
 };
 
 exports.getMenu = (req, res, next) => {
-  res.render("user/menu", { title: "Menu" });
+  Product.findAll()
+    .then((products) => {
+      console.log(JSON.stringify(products));
+      res.render("user/menu", { title: "Menu", products: products });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.getOrder = (req, res, next) => {

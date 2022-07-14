@@ -35,3 +35,25 @@ a {
   color: darkblue;
   text-decoration: none;
 }
+
+.centered { 
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.product-item {
+  padding-bottom: 10px;
+  border: 3px solid green;
+}
+
+.product-item__tile {
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.product-item__image {
+  border-radius: 8px;
+  width: 300px;
+  height: auto;
+}
